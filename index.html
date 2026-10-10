@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Gesture AI</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">
+      <span class="brand-icon">✦</span>
+      Smart Gesture <span class="accent">AI</span>
+    </a>
+    <span class="status"><span class="dot"></span> Browser ML</span>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <p class="eyebrow">COMPUTER VISION PROJECT</p>
+      <h1>Gestures, <span class="accent">understood.</span></h1>
+      <p class="subtitle">
+        An image classification model trained with Google Teachable Machine.
+        Show your hand and watch the AI make a prediction.
+      </p>
+    </section>
+
+    <section class="dashboard">
+      <article class="panel camera-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">LIVE INPUT</p>
+            <h2>Camera preview</h2>
+          </div>
+          <span id="cameraStatus" class="badge">Camera off</span>
+        </div>
+
+        <div id="cameraView" class="camera-view">
+          <div id="cameraPlaceholder" class="placeholder">
+            <div class="camera-icon">◎</div>
+            <h3>Your camera is waiting</h3>
+            <p>Start the camera to begin gesture recognition.</p>
+          </div>
+        </div>
+
+        <div class="camera-actions">
+          <button id="startButton" class="button primary">Start camera</button>
+          <button id="stopButton" class="button secondary" disabled>Stop camera</button>
+        </div>
+        <p id="message" class="message" role="status">
+          Ready to load your trained model.
+        </p>
+      </article>
+
+      <article class="panel prediction-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">MODEL OUTPUT</p>
+            <h2>Live predictions</h2>
+          </div>
+          <span class="ai-icon">✳</span>
+        </div>
+
+        <div class="result-box">
+          <p class="result-label">CURRENT PREDICTION</p>
+          <h3 id="topPrediction">Waiting...</h3>
+          <p id="topConfidence" class="result-confidence">--%</p>
+        </div>
+
+        <div class="section-heading">
+          <h3>Class confidence</h3>
+          <span>Live</span>
+        </div>
+
+        <div id="predictionList" class="prediction-list">
+          <p class="muted">Predictions will appear when the camera starts.</p>
+        </div>
+
+        <div class="info-box">
+          <span>ⓘ</span>
+          <p>Confidence is the model's score, not a guarantee that its prediction is correct.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="stats">
+      <article class="stat-card">
+        <span class="stat-icon">◉</span>
+        <div><p>MODEL</p><h3 id="modelStatus">Not loaded</h3></div>
+      </article>
+      <article class="stat-card">
+        <span class="stat-icon">⌁</span>
+        <div><p>CLASSES</p><h3 id="classCount">--</h3></div>
+      </article>
+      <article class="stat-card">
+        <span class="stat-icon">↗</span>
+        <div><p>SESSION PREDICTIONS</p><h3 id="predictionCount">0</h3></div>
+      </article>
+    </section>
+
+    <footer>
+      <p>Built as a hands-on Machine Learning project.</p>
+      <p>Powered by TensorFlow.js · Google Teachable Machine</p>
+    </footer>
+  </main>
+</body>
+</html>
